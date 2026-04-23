@@ -165,6 +165,12 @@ ggplot(inequality,
 
 ![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
+This plot explores the movement of Chile and Argentina’s respective Gini
+coefficients since 1987. This annual figure indicates the level of
+inequality present in an economy. Chile a much higher level of
+inequality compared to Argentina, but over the years the two have
+seemingly converged.
+
 ## Plot 2: Commodity Prices
 
 ``` r
@@ -176,3 +182,9 @@ ggplot(commodity_prices,
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+The second plot explores the movements in monthly commodity prices since
+1992. Until the mid-2000s, copper, zinc, and aluminium were in close
+range of each other. Copper has since diverged in price and around three
+times the price of aluminium and zinc in the age of the green transition
+and growing demand for copper.
