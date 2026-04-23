@@ -142,6 +142,7 @@ ggplot(inequality,
 ```
 
 This plot explores the movement of Chile and Argentina's respective Gini coefficients since 1987. This annual figure indicates the level of inequality present in an economy. Chile a much higher level of inequality compared to Argentina, but over the years the two have seemingly converged. 
+
 ## Plot 2: Commodity Prices
 
 ```{r}
