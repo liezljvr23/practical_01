@@ -1,21 +1,6 @@
----
-title: "Practical_01: API exercise"
-output: html_document
-date: "2026-04-23"
----
+# Task 1: set up R project and initialise Github repository
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-# Data
-Data is collected using the FRED API. The GINI coefficient - an indicator of inequality - is obtained for Chile and Argentina from 1987 to 2024. Further, the USD prices of commodities (copper, zinc, and aluminum) per metric ton  are collected.
-
-
-# Installation, data collection, and tidying
-Install (if necessary) and load fredr, pacman, and tidyverse. 
-
-```{r}
+# Install and load packages, including fredr - fetching data from FRED
 if(!require ( "pacman" , quietly = TRUE ) ) {
    install.packages("pacman")
    library(pacman)
@@ -25,12 +10,7 @@ if(!require ( "fredr" , quietly = TRUE ) ) {
   library(fredr)
   }
 library(tidyverse)
-```
 
-# Data collection
-Use the FRED API key and indicator names to source the time series. 
-
-```{r}
 # Set your FRED API key - obtain from https://fredaccount.stlouisfed.org/apikey
 fredr_set_key("ec84f06f1b178b454f2923dc06f22591")
 
@@ -47,14 +27,7 @@ copper_price <- fredr(series_id = "PCOPPUSDM" , observation_start = as.Date("199
 aluminium_price <- fredr(series_id = "PALUMUSDM" , observation_start = as.Date("1992-01-01"))
 
 zinc_price <- fredr(series_id = "PZINCUSDM" , observation_start = as.Date("1992-01-01"))
-```
 
-
-# Data cleaning and tidying
-
-Columns meaningfully renamed, the Chile and Argentina dataframes are merged into an "Inequality" dataframe, and commodity prices are merged into a "Commodity Price" dataframe. The dataframes are then tidied by removing unnecessary columns and by using pivot_longer to make new "country" and "commodity" columns in the respective dataframes.
-
-```{r}
 # Tidy the data for the first plot
 
 arg_gini <- argentina_gini %>% 
@@ -124,31 +97,17 @@ commodity_prices <- merge03 %>%
     names_to = "commodity",
     values_to = "price"
   )
-```
 
-
-# Plots
-ggplot is used to visualise the data from the cleaned and tidied dataframes.
-
-## Plot 1: Chile and Argentina Gini Coefficients
-
-```{r}
 # Plot 1: Chile and Argentina Gini Coefficients
 ggplot(inequality,
        aes(x = date, y = gini, colour = country)) +
   geom_point() +
   geom_smooth() +
   labs( title = "Chile and Argentina Gini Coeffecients", y = "Gini", x = "Year")
-```
 
-
-## Plot 2: Commodity Prices
-
-```{r}
 #Plot 2: Commodity Prices
 ggplot(commodity_prices,
        aes(x = date, y = price, colour = commodity)) +
   geom_line() +
   labs( title = "Commodity Prices", y = "USD per Metric Ton", x = "Year")
-```
 
