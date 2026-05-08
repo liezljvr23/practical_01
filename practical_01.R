@@ -12,7 +12,7 @@ if(!require ( "fredr" , quietly = TRUE ) ) {
 library(tidyverse)
 
 # Set your FRED API key - obtain from https://fredaccount.stlouisfed.org/apikey
-fredr_set_key("ec84f06f1b178b454f2923dc06f22591")
+fredr_set_key("your key")
 
 # Fetch Chile and Argentina Gini Coefficients
 
